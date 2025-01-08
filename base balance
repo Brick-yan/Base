@@ -1,0 +1,16 @@
+from web3 import Web3
+#连接到base链
+rpc_url = 'https://base.llamarpc.com'
+web3 = Web3(Web3.HTTPProvider(rpc_url))
+
+#要查询的钱包地址
+account_address = '0xcfA22fD42CcACC10189e651a0d041C5B96A7f8e8'
+
+#获取钱包余额（wei）
+balance_wei = web3.eth.get_balance(account_address)
+
+#将wei转换为ether
+balance_ether = web3.from_wei(balance_wei,'ether')
+
+#打印结果
+print(f"{account_address}的余额是{balance_ether}ETH")
